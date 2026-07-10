@@ -1,0 +1,218 @@
+/* ── Watch Dial SVGs as data URIs ── */
+/* Each watch gets a distinct dial: color, indices, hands */
+
+.watch-dial {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Shared: minute markers + hands */
+.watch-dial::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.watch-dial::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 28%;
+  background: currentColor;
+  top: 22%;
+  left: calc(50% - 1px);
+  transform-origin: bottom center;
+  transform: rotate(15deg);
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+.watch-brand {
+  position: absolute;
+  top: 28%;
+  font-size: clamp(10px, 2.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  z-index: 1;
+}
+.watch-model {
+  position: absolute;
+  top: 38%;
+  font-size: clamp(7px, 1.5vw, 10px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+/* ── Submariner: black dial, green accents ── */
+.dial-submariner {
+  background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 40%, #1a1a1a 100%);
+  color: #ffffff;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
+}
+.dial-submariner .watch-brand { color: #127358; }
+.dial-submariner::before { border-color: rgba(18,115,88,0.3); }
+.dial-submariner::after { background: #ffffff; }
+/* date window */
+.dial-submariner .date-window {
+  position: absolute;
+  right: 22%;
+  top: 42%;
+  width: 18%;
+  height: 8%;
+  background: #ffffff;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(6px, 1.4vw, 9px);
+  font-weight: 700;
+  color: #000;
+  z-index: 1;
+}
+/* cyclops */
+.dial-submariner .cyclops {
+  position: absolute;
+  right: 20%;
+  top: 40%;
+  width: 21%;
+  height: 12%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  z-index: 2;
+}
+
+/* ── Daytona: white dial, black subdials ── */
+.dial-daytona {
+  background: linear-gradient(160deg, #f5f5f0 0%, #ffffff 50%, #f0f0eb 100%);
+  color: #1a1a1a;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.05);
+}
+.dial-daytona .watch-brand, .dial-daytona .watch-model { color: #1a1a1a; }
+.dial-daytona::before { border-color: rgba(0,0,0,0.15); }
+.dial-daytona::after { background: #1a1a1a; }
+/* subdials */
+.dial-daytona .subdial { position: absolute; width: 20%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); background: rgba(0,0,0,0.03); }
+.dial-daytona .subdial:nth-child(1) { left: 16%; top: 48%; }
+.dial-daytona .subdial:nth-child(2) { right: 16%; top: 48%; }
+.dial-daytona .subdial:nth-child(3) { left: 40%; bottom: 15%; }
+
+/* ── Datejust: silver sunburst dial, fluted bezel ── */
+.dial-datejust {
+  background: radial-gradient(circle at 30% 30%, #e8e6e0, #c8c6c0 60%, #b0aeaa);
+  color: #2a2a2a;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.1);
+}
+.dial-datejust .watch-brand, .dial-datejust .watch-model { color: #2a2a2a; }
+.dial-datejust::before { border-color: rgba(0,0,0,0.2); }
+.dial-datejust::after { background: #2a2a2a; }
+
+/* ── GMT-Master II: black dial, blue/red bezel ring ── */
+.dial-gmt {
+  background: linear-gradient(160deg, #1a1a1a 0%, #111 40%, #1a1a1a 100%);
+  color: #ffffff;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
+}
+.dial-gmt .watch-brand { color: #ffffff; }
+.dial-gmt::before { border-color: rgba(255,255,255,0.25); }
+.dial-gmt::after { background: #127358; width: 2px; height: 36%; top: 18%; }
+/* GMT hand (green) */
+.dial-gmt .gmt-hand {
+  position: absolute;
+  width: 1.5px;
+  height: 34%;
+  background: #127358;
+  top: 16%;
+  left: calc(50% - 0.75px);
+  transform-origin: bottom center;
+  transform: rotate(-30deg);
+  border-radius: 1px;
+  opacity: 0.85;
+  z-index: 1;
+}
+/* bi-color bezel ring */
+.dial-gmt .bezel-ring {
+  position: absolute;
+  inset: 2%;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  background: conic-gradient(from 180deg, #c1121f 0% 50%, #1d3557 50% 100%) border-box;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 8px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 8px));
+  opacity: 0.7;
+}
+
+/* ── Day-Date: champagne dial, gold accents ── */
+.dial-daydate {
+  background: linear-gradient(145deg, #d4af37 0%, #c5a028 30%, #b8960f 60%, #d4af37 100%);
+  color: #3a2a00;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.2);
+}
+.dial-daydate .watch-brand, .dial-daydate .watch-model { color: #3a2a00; }
+.dial-daydate::before { border-color: rgba(58,42,0,0.3); }
+.dial-daydate::after { background: #3a2a00; }
+/* day window at 12 */
+.dial-daydate .day-window {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  height: 6%;
+  background: #fffef5;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(5px, 1.2vw, 7px);
+  font-weight: 700;
+  color: #3a2a00;
+  z-index: 1;
+}
+
+/* ── Explorer: black dial, 3-6-9 numerals ── */
+.dial-explorer {
+  background: linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 40%, #1a1a1a 100%);
+  color: #ffffff;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.6);
+}
+.dial-explorer .watch-brand { color: #ffffff; }
+.dial-explorer::before { border-color: rgba(255,255,255,0.2); }
+.dial-explorer::after { background: #ffffff; }
+/* 3-6-9 numerals */
+.dial-explorer .numeral {
+  position: absolute;
+  font-weight: 700;
+  font-size: clamp(14px, 4vw, 22px);
+  z-index: 1;
+  color: rgba(255,255,255,0.9);
+}
+.dial-explorer .num-3 { right: 18%; top: 42%; }
+.dial-explorer .num-6 { left: 44%; bottom: 20%; }
+.dial-explorer .num-9 { left: 16%; top: 42%; }
+
+/* ── Product card image container ── */
+.product-card-image {
+  aspect-ratio: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+}
+.product-card-image .watch-dial {
+  max-width: 220px;
+  margin: 0 auto;
+}

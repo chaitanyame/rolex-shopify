@@ -128,13 +128,44 @@ test.describe('Product Grid', () => {
   });
 
   test('each product card has a name and price', async ({ page }) => {
+  await page.goto('/');
+  const cards = page.locator('.product-card');
+  const count = await cards.count();
+  for (let i = 0; i < count; i++) {
+    await expect(cards.nth(i).locator('.product-name')).toBeVisible();
+    await expect(cards.nth(i).locator('.product-price')).toBeVisible();
+  }
+  });
+
+  test('each product card has a watch dial image', async ({ page }) => {
+  await page.goto('/');
+  const dials = page.locator('.product-card .watch-dial');
+  await expect(dials).toHaveCount(6);
+  });
+
+  test('watch dials display Rolex branding', async ({ page }) => {
+  await page.goto('/');
+  const brands = page.locator('.product-card .watch-brand');
+  await expect(brands).toHaveCount(6);
+  for (let i = 0; i < 6; i++) {
+    await expect(brands.nth(i)).toContainText('Rolex');
+  }
+  });
+
+  test('watch dials have correct model-specific classes', async ({ page }) => {
     await page.goto('/');
-    const cards = page.locator('.product-card');
-    const count = await cards.count();
-    for (let i = 0; i < count; i++) {
-      await expect(cards.nth(i).locator('.product-name')).toBeVisible();
-      await expect(cards.nth(i).locator('.product-price')).toBeVisible();
-    }
+    await expect(page.locator('.product-card .dial-submariner')).toBeVisible();
+    await expect(page.locator('.product-card .dial-daytona')).toBeVisible();
+    await expect(page.locator('.product-card .dial-datejust')).toBeVisible();
+    await expect(page.locator('.product-card .dial-gmt')).toBeVisible();
+    await expect(page.locator('.product-card .dial-daydate')).toBeVisible();
+    await expect(page.locator('.product-card .dial-explorer')).toBeVisible();
+  });
+
+  test('no emoji placeholders used for watches', async ({ page }) => {
+  await page.goto('/');
+  const emojiWatch = page.locator('.product-card-image').filter({ hasText: '⌚' });
+  await expect(emojiWatch).toHaveCount(0);
   });
 
   test('each product has Add to Cart button', async ({ page }) => {
