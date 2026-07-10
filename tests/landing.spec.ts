@@ -137,35 +137,47 @@ test.describe('Product Grid', () => {
   }
   });
 
-  test('each product card has a watch dial image', async ({ page }) => {
-  await page.goto('/');
-  const dials = page.locator('.product-card .watch-dial');
-  await expect(dials).toHaveCount(6);
-  });
-
-  test('watch dials display Rolex branding', async ({ page }) => {
-  await page.goto('/');
-  const brands = page.locator('.product-card .watch-brand');
-  await expect(brands).toHaveCount(6);
-  for (let i = 0; i < 6; i++) {
-    await expect(brands.nth(i)).toContainText('Rolex');
-  }
-  });
-
-  test('watch dials have correct model-specific classes', async ({ page }) => {
+  test('each product card has a watch image (img tag)', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('.product-card .dial-submariner')).toBeVisible();
-    await expect(page.locator('.product-card .dial-daytona')).toBeVisible();
-    await expect(page.locator('.product-card .dial-datejust')).toBeVisible();
-    await expect(page.locator('.product-card .dial-gmt')).toBeVisible();
-    await expect(page.locator('.product-card .dial-daydate')).toBeVisible();
-    await expect(page.locator('.product-card .dial-explorer')).toBeVisible();
+    const imgs = page.locator('.product-card-image img');
+    await expect(imgs).toHaveCount(6);
   });
 
-  test('no emoji placeholders used for watches', async ({ page }) => {
-  await page.goto('/');
-  const emojiWatch = page.locator('.product-card-image').filter({ hasText: '⌚' });
-  await expect(emojiWatch).toHaveCount(0);
+  test('watch images have descriptive alt text', async ({ page }) => {
+    await page.goto('/');
+    const imgs = page.locator('.product-card-image img');
+    const count = await imgs.count();
+    for (let i = 0; i < count; i++) {
+      const alt = await imgs.nth(i).getAttribute('alt');
+      expect(alt).toBeTruthy();
+      expect(alt).toContain('Rolex');
+    }
+  });
+
+  test('watch images load from Unsplash CDN', async ({ page }) => {
+    await page.goto('/');
+    const imgs = page.locator('.product-card-image img');
+    const count = await imgs.count();
+    for (let i = 0; i < count; i++) {
+      const src = await imgs.nth(i).getAttribute('src');
+      expect(src).toContain('images.unsplash.com');
+    }
+  });
+
+  test('watch images use lazy loading', async ({ page }) => {
+    await page.goto('/');
+    const imgs = page.locator('.product-card-image img');
+    const count = await imgs.count();
+    for (let i = 0; i < count; i++) {
+      const loading = await imgs.nth(i).getAttribute('loading');
+      expect(loading).toBe('lazy');
+    }
+  });
+
+  test('no CSS dial placeholders remain in product cards', async ({ page }) => {
+    await page.goto('/');
+    const dials = page.locator('.product-card .watch-dial');
+    await expect(dials).toHaveCount(0);
   });
 
   test('each product has Add to Cart button', async ({ page }) => {
