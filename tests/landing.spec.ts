@@ -154,13 +154,13 @@ test.describe('Product Grid', () => {
     }
   });
 
-  test('watch images load from Unsplash CDN', async ({ page }) => {
+  test('watch images load from Wikimedia Commons (genuine Rolex photos)', async ({ page }) => {
     await page.goto('/');
     const imgs = page.locator('.product-card-image img');
     const count = await imgs.count();
     for (let i = 0; i < count; i++) {
       const src = await imgs.nth(i).getAttribute('src');
-      expect(src).toContain('images.unsplash.com');
+      expect(src).toContain('upload.wikimedia.org');
     }
   });
 
