@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolex — Timeless Luxury Watches</title>
+  <meta name="description" content="Discover the world of Rolex. Shop iconic Swiss luxury watches — Submariner, Daytona, Datejust, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-primary: #121212;
+      --color-secondary: #555555;
+      --color-accent: #127358;
+      --color-accent-hover: #0a5c46;
+      --color-neutral: #fafafa;
+      --color-surface: #ffffff;
+      --color-muted: #6b7177;
+      --color-border: #e0e0e0;
+      --font-display: 3.5rem;
+      --font-h1: 2.5rem;
+      --font-h2: 1.75rem;
+      --font-h3: 1.25rem;
+      --font-body: 1rem;
+      --font-sm: 0.875rem;
+      --font-xs: 0.75rem;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-pill: 9999px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--color-primary);
+      background: var(--color-neutral);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== ANNOUNCEMENT BAR ========== */
+    .announcement {
+      background: var(--color-primary);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: var(--font-sm);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .announcement a {
+      color: #ffffff;
+      text-underline-offset: 3px;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .logo-crown {
+      color: var(--color-accent);
+      margin-right: 4px;
+    }
+    .nav { display: flex; gap: 32px; align-items: center; }
+    .nav a {
+      text-decoration: none;
+      color: var(--color-secondary);
+      font-size: var(--font-sm);
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav a:hover { color: var(--color-primary); }
+    .header-actions { display: flex; gap: 12px; align-items: center; }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s;
+    }
+    .icon-btn:hover { background: rgba(0,0,0,0.04); }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: var(--color-primary);
+      color: #ffffff;
+      text-align: center;
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(18,115,88,0.15), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.9);
+      font-size: var(--font-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .hero h1 {
+      font-size: var(--font-display);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ========== BUTTONS ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: var(--font-body);
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--color-accent);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-outline-light {
+      background: transparent;
+      color: #ffffff;
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline-light:hover {
+      border-color: #ffffff;
+      background: rgba(255,255,255,0.05);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-border);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-primary);
+      background: rgba(0,0,0,0.02);
+    }
+
+    /* ========== TRUST BAR ========== */
+    .trust-bar {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 24px 0;
+    }
+    .trust-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: var(--font-sm);
+      font-weight: 500;
+      color: var(--color-secondary);
+    }
+    .trust-item .trust-icon { font-size: 1.2rem; }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      padding: 80px 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-size: var(--font-h1);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      color: var(--color-muted);
+      font-size: var(--font-body);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ========== PRODUCT GRID ========== */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .product-card-image {
+      aspect-ratio: 1;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      position: relative;
+    }
+    .product-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--color-primary);
+      color: #ffffff;
+      font-size: var(--font-xs);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+    .product-card-body {
+      padding: 20px;
+    }
+    .product-collection {
+      font-size: var(--font-xs);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-size: var(--font-h3);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .product-ref {
+      font-size: var(--font-sm);
+      color: var(--color-muted);
+      margin-bottom: 12px;
+    }
+    .product-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+    }
+    .product-actions { display: flex; gap: 8px; }
+    .product-actions .btn { flex: 1; padding: 10px 16px; font-size: var(--font-sm); }
+
+    /* ========== COLLECTION FEATURE ========== */
+    .collection {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 64px;
+    }
+    .collection-image {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+    }
+    .collection-body {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .collection-body h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .collection-body p {
+      color: var(--color-muted);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    /* ========== FEATURES ========== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .feature-card h3 {
+      font-size: var(--font-h3);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      color: var(--color-muted);
+      font-size: var(--font-sm);
+      line-height: 1.6;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+    .testimonial-stars { color: #f5a623; font-size: 0.95rem; margin-bottom: 12px; }
+    .testimonial-text {
+      font-size: var(--font-sm);
+      color: var(--color-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial-author { font-weight: 600; font-size: var(--font-sm); }
+    .testimonial-role { font-size: var(--font-xs); color: var(--color-muted); }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: var(--color-primary);
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .cta-section h2 {
+      font-size: var(--font-h1);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      margin: 0 auto 32px;
+      font-size: 1.1rem;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: 64px 24px 32px;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-brand .logo { display: inline-block; margin-bottom: 12px; }
+    .footer-brand p {
+      color: var(--color-muted);
+      font-size: var(--font-sm);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .footer-col h4 {
+      font-size: var(--font-xs);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--color-primary);
+    }
+    .footer-col a {
+      display: block;
+      text-decoration: none;
+      color: var(--color-muted);
+      font-size: var(--font-sm);
+      margin-bottom: 10px;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--font-xs);
+      color: var(--color-muted);
+    }
+
+    /* ========== MOBILE NAV OVERLAY ========== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--color-surface);
+      z-index: 200;
+      padding: 24px;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .mobile-nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--color-primary);
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ========== CART DRAWER ========== */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 300;
+    }
+    .cart-overlay.open { display: block; }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 420px;
+      max-width: 100vw;
+      height: 100vh;
+      background: var(--color-surface);
+      z-index: 301;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.3s;
+    }
+    .cart-drawer.open { transform: translateX(0); }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 0;
+    }
+    .cart-empty {
+      text-align: center;
+      color: var(--color-muted);
+      padding: 48px 0;
+      font-size: var(--font-sm);
+    }
+    .cart-total {
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+      margin-bottom: 16px;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .collection { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(3, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      :root { --font-display: 2.5rem; --font-h1: 1.75rem; }
+      .nav { display: none; }
+      .mobile-menu-btn { display: block; }
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .collection-body { padding: 32px; }
+      .hero { padding: 64px 24px 56px; }
+      .section { padding: 56px 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .trust-bar-inner { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      :root { --font-display: 2rem; --font-h1: 1.5rem; }
+      .product-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .hero-actions .btn { width: 100%; max-width: 300px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .cart-drawer { width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement">
+    Complimentary express shipping on all orders &bull; <a href="#">Learn more</a>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo"><span class="logo-crown">&#9830;</span>Rolex</a>
+      <nav class="nav">
+        <a href="#watches">Watches</a>
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="toggleSearch()" aria-label="Search">&#128269;</button>
+        <button class="icon-btn" onclick="toggleCart()" aria-label="Cart" id="cart-btn">&#128722;<span id="cart-count" style="font-size:0.7rem;background:var(--color-accent);color:#fff;border-radius:50%;padding:1px 6px;margin-left:2px;display:none;">0</span></button>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-header">
+      <span class="logo">&#9830;Rolex</span>
+      <button class="close-btn" onclick="toggleMobileNav()">&times;</button>
+    </div>
+    <a href="#watches" onclick="toggleMobileNav()">Watches</a>
+    <a href="#collections" onclick="toggleMobileNav()">Collections</a>
+    <a href="#about" onclick="toggleMobileNav()">About</a>
+    <a href="#services" onclick="toggleMobileNav()">Services</a>
+    <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+  </div>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>Shopping Cart</h3>
+      <button class="close-btn" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <div class="cart-empty">Your cart is empty.</div>
+    </div>
+    <div class="cart-total" id="cart-total" style="display:none;">
+      <div class="cart-total-row"><span>Subtotal</span><span id="cart-subtotal">$0</span></div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;" onclick="checkout()">Checkout</button>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">New Collection 2026</div>
+    <h1>Crafted to<br>perfection</h1>
+    <p>Discover the world of Rolex — where heritage meets innovation. Shop our iconic collection of Swiss-made luxury timepieces.</p>
+    <div class="hero-actions">
+      <a href="#watches" class="btn btn-primary">Shop Watches</a>
+      <a href="#collections" class="btn btn-outline-light">Explore Collections</a>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><span class="trust-icon">&#9989;</span> Swiss Made</div>
+      <div class="trust-item"><span class="trust-icon">&#128230;</span> Free Shipping</div>
+      <div class="trust-item"><span class="trust-icon">&#128179;</span> 5-Year Warranty</div>
+      <div class="trust-item"><span class="trust-icon">&#128260;</span> Secure Payment</div>
+      <div class="trust-item"><span class="trust-icon">&#128222;</span> 24/7 Support</div>
+    </div>
+  </div>
+
+  <!-- Featured Watches -->
+  <section class="section" id="watches">
+    <div class="section-header">
+      <h2>Featured Timepieces</h2>
+      <p>Explore our most coveted models — each a testament to precision engineering and timeless design.</p>
+    </div>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <span class="product-tag">Bestseller</span>
+          ⌚
+        </div>
+        <div class="product-card-body">
+          <div class="product-collection">Submariner</div>
+          <div class="product-name">Submariner Date</div>
+          <div class="product-ref">Ref. 126610LN</div>
+          <div class="product-price">$10,100</div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="addToCart('Submariner Date', 10100)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <span class="product-tag">Limited</span>
+          ⌚
+        </div>
+        <div class="product-card-body">
+          <div class="product-collection">Daytona</div>
+          <div class="product-name">Cosmograph Daytona</div>
+          <div class="product-ref">Ref. 116500LN</div>
+          <div class="product-price">$14,800</div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="addToCart('Cosmograph Daytona', 14800)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          ⌚
+        </div>
+        <div class="product-card-body">
+          <div class="product-collection">Datejust</div>
+          <div class="product-name">Datejust 41</div>
+          <div class="product-ref">Ref. 126334</div>
+          <div class="product-price">$7,650</div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="addToCart('Datejust 41', 7650)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          ⌚
+        </div>
+        <div class="product-card-body">
+          <div class="product-collection">GMT-Master II</div>
+          <div class="product-name">GMT-Master II</div>
+          <div class="product-ref">Ref. 126710BLNR</div>
+          <div class="product-price">$10,700</div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="addToCart('GMT-Master II', 10700)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          <span class="product-tag">New</span>
+          ⌚
+        </div>
+        <div class="product-card-body">
+          <div class="product-collection">Day-Date</div>
+          <div class="product-name">Day-Date 40</div>
+          <div class="product-ref">Ref. 228238</div>
+          <div class="product-price">$38,500</div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="addToCart('Day-Date 40', 38500)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="product-card-image">
+          ⌚
+        </div>
+        <div class="product-card-body">
+          <div class="product-collection">Explorer</div>
+          <div class="product-name">Explorer 40</div>
+          <div class="product-ref">Ref. 224270</div>
+          <div class="product-price">$7,250</div>
+          <div class="product-actions">
+            <button class="btn btn-primary" onclick="addToCart('Explorer 40', 7250)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection Feature -->
+  <section class="section" id="collections">
+    <div class="collection">
+      <div class="collection-image">⌚</div>
+      <div class="collection-body">
+        <div class="product-collection" style="margin-bottom:8px;">The Oyster Perpetual Collection</div>
+        <h3>A legacy of excellence</h3>
+        <p>Since 1926, the Oyster case has defined waterproof watchmaking. Each timepiece is assembled by hand in our Swiss ateliers and tested to the most exacting standards — because perfection has no shortcut.</p>
+        <a href="#" class="btn btn-outline">Discover the Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <h2>The Rolex Difference</h2>
+      <p>Every Rolex is built to last generations. Here's what sets us apart.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">&#128736;</span>
+        <h3>In-House Movement</h3>
+        <p>Every component — from the hairspring to the escapement — is designed and manufactured in our own facilities.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128207;</span>
+        <h3>Superlative Chronometer</h3>
+        <p>Each watch is certified to an accuracy of −2/+2 seconds per day — twice the precision of a standard chronometer.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128300;</span>
+        <h3>904L Oystersteel</h3>
+        <p>We use 904L steel — a superalloy that resists corrosion and polishes to an unmatched luster found only on Rolex watches.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128065;</span>
+        <h3>Cyclops Lens</h3>
+        <p>The signature magnifying lens over the date window — virtually scratchproof and a hallmark of Rolex craftsmanship since 1953.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#127754;</span>
+        <h3>Waterproof to Extremes</h3>
+        <p>From the Submariner's 300m depth rating to the Deepsea's 3,900m — every Oyster case is individually pressure-tested.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128176;</span>
+        <h3>Holds Its Value</h3>
+        <p>Rolex watches consistently appreciate over time. A purchase today is an heirloom — and an investment — for tomorrow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <h2>What Our Clients Say</h2>
+      <p>Trusted by collectors and enthusiasts worldwide.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"The Submariner Date is everything I hoped for. The precision, the weight on the wrist — it's unmistakably a Rolex. Delivery was seamless and the packaging was impeccable."</p>
+        <div class="testimonial-author">James Mitchell</div>
+        <div class="testimonial-role">New York, NY</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"I bought the Daytona for my 40th and couldn't be happier. The chronograph is silky smooth and the white dial catches light beautifully. This watch turns heads everywhere."</p>
+        <div class="testimonial-author">Sophie Laurent</div>
+        <div class="testimonial-role">London, UK</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">"Third Rolex from this store. The Datejust 41 with the fluted bezel and jubilee bracelet is pure class. Their 5-year warranty gives me real peace of mind."</p>
+        <div class="testimonial-author">Rajesh Patel</div>
+        <div class="testimonial-role">Mumbai, India</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to make it yours?</h2>
+    <p>Join the ranks of those who wear a legend on their wrist. Browse our full collection and find the Rolex that speaks to you.</p>
+    <a href="#watches" class="btn btn-primary" style="min-width:200px;">Shop All Watches</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">&#9830;Rolex</span>
+        <p>The world's most recognized luxury watchmaker. Swiss craftsmanship since 1905.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#">Submariner</a>
+        <a href="#">Daytona</a>
+        <a href="#">Datejust</a>
+        <a href="#">GMT-Master II</a>
+        <a href="#">All Watches</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Rolex</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Sustainability</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">FAQs</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Rolex. All rights reserved. This is a demo store.</span>
+      <span>Secured by &#128274; SSL</span>
+    </div>
+  </footer>
+
+  <script>
+    // ===== CART =====
+    let cart = [];
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+      // Brief feedback
+      const btn = event.target;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#0a5c46';
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1200);
+    }
+    function updateCart() {
+      const count = cart.length;
+      const countEl = document.getElementById('cart-count');
+      countEl.textContent = count;
+      countEl.style.display = count > 0 ? 'inline' : 'none';
+      const itemsEl = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      if (count === 0) {
+        itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+        totalEl.style.display = 'none';
+      } else {
+        let html = '';
+        let subtotal = 0;
+        cart.forEach((item, i) => {
+          html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--color-border);">
+            <div><strong>${item.name}</strong><br><span style="font-size:0.8rem;color:var(--color-muted);">$${item.price.toLocaleString()}</span></div>
+            <button onclick="removeFromCart(${i})" style="background:none;border:none;cursor:pointer;color:var(--color-muted);font-size:1.2rem;">&times;</button>
+          </div>`;
+          subtotal += item.price;
+        });
+        itemsEl.innerHTML = html;
+        subtotalEl.textContent = '$' + subtotal.toLocaleString();
+        totalEl.style.display = 'block';
+      }
+    }
+    function removeFromCart(i) { cart.splice(i, 1); updateCart(); }
+    function checkout() { if (cart.length > 0) alert('Proceeding to checkout with ' + cart.length + ' item(s). Total: $' + cart.reduce((s,i) => s + i.price, 0).toLocaleString()); }
+    function toggleCart() {
+      document.getElementById('cart-overlay').classList.toggle('open');
+      document.getElementById('cart-drawer').classList.toggle('open');
+    }
+    function toggleMobileNav() { document.getElementById('mobile-nav').classList.toggle('open'); }
+    function toggleSearch() { alert('Search: Type a watch name or reference number.'); }
+  </script>
+
+  <!-- No external JS dependencies -->
+</body>
+</html>
